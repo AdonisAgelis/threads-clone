@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { SignedIn, SignOutButton } from "@clerk/nextjs";
+import { SignedIn, SignOutButton, OrganizationSwitcher } from "@clerk/nextjs";
 
 export default function Topbar() {
   return (
@@ -24,6 +24,13 @@ export default function Topbar() {
             </SignOutButton>
           </SignedIn>
         </div>
+        <OrganizationSwitcher
+          appearance={{
+            elements: {
+              organizationSwitcherTrigger: "py-2 px-4",
+            },
+          }}
+        />
       </div>
     </nav>
   );
