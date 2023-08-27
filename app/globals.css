@@ -60,7 +60,7 @@
 
   .topbar {
     /* I changed this color to bg-dark-1 from bg-dark-2 */
-    @apply fixed top-0 z-30 flex w-full items-center justify-between bg-dark-1 px-6 py-3;
+    @apply fixed top-0 z-30 flex w-full items-center justify-between bg-dark-2 px-6 py-3;
   }
 
   .bottombar {
