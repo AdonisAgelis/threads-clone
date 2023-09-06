@@ -1,3 +1,5 @@
+"use server";
+
 import { connectToDatabase } from "../mongoose";
 import Thread from "../models/thread.model";
 import User from "../models/user.model";
@@ -33,8 +35,6 @@ export async function createThread({
 
     revalidatePath(path);
   } catch (error: any) {
-    throw new Error(
-      `Failed to create thread and update user: ${error.message}`
-    );
+    throw new Error(`Error creating thread: ${error.message}`);
   }
 }
