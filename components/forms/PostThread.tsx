@@ -14,20 +14,8 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import * as z from "zod";
 import { usePathname, useRouter } from "next/navigation";
-// import { updateUser } from "@/lib/actions/user.actions";
 import { ThreadValidation } from "@/lib/validations/thread";
-
-interface Props {
-  user: {
-    id: string;
-    objectId: string;
-    username: string;
-    name: string;
-    bio: string;
-    image: string;
-  };
-  btnTitle: string;
-}
+import { createThread } from "@/lib/actions/thread.actions";
 
 export default function PostThread({ userId }: { userId: string }) {
   const router = useRouter();
@@ -41,8 +29,16 @@ export default function PostThread({ userId }: { userId: string }) {
     },
   });
 
-  // We are here
-  const onSubmit = () => {};
+  const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
+    await createThread({
+      text: values.thread,
+      author: userId,
+      communityId: null,
+      path: pathname,
+    });
+
+    router.push("/");
+  };
 
   return (
     <Form {...form}>
