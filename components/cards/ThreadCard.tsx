@@ -34,6 +34,7 @@ export default function ThreadCard({
   community,
   createdAt,
   comments,
+  isComment,
 }: ThreadCardProps) {
   return (
     <article className="flex flex-col w-full rounded-xl bg-dark-2 p-7">
@@ -90,7 +91,13 @@ export default function ThreadCard({
                   height={24}
                 />
               </div>
-              {/* We are here */}
+              {isComment && comments.length && (
+                <Link href={`/thread/${threadId}`}>
+                  <p className="mt-1 text-subtle-medium text-gray-1">
+                    {comments.length} replies
+                  </p>
+                </Link>
+              )}
             </div>
           </div>
         </div>
