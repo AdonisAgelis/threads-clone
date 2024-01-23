@@ -29,13 +29,13 @@ export default async function Page() {
           <p className="no-result">No users found</p>
         ) : (
           <>
-            {result.users.map(user => (
+            {result.users.map(({ id, name, username, image }) => (
               <UserCard
-                key={user.id}
-                id={user.id}
-                name={user.name}
-                username={user.username}
-                imgUrl={user.image}
+                key={id}
+                id={id}
+                name={name}
+                username={username}
+                imgUrl={image}
                 userType="User"
               />
             ))}
